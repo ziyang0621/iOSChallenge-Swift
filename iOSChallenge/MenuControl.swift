@@ -21,6 +21,7 @@ let π:CGFloat = CGFloat(M_PI)
     @IBInspectable var spaceBetweenArcs: CGFloat = 10.0
     @IBInspectable var numbersOfOptions: Int = 3 {
         didSet {
+            menuChoices.removeAll(keepCapacity: false)
             for index in 0..<numbersOfOptions {
                 menuChoices.append("item")
             }
@@ -48,7 +49,15 @@ let π:CGFloat = CGFloat(M_PI)
     
     func randomizeChoices() {
         selectedIndex = Int(arc4random_uniform(UInt32(menuChoices.count)))
-        setNeedsDisplay()        
+        setNeedsDisplay()
+        
+        let animateRotate = CABasicAnimation(keyPath: "transform.rotation.z")
+        animateRotate.duration = 1.0
+        animateRotate.fromValue = 0.0
+        animateRotate.toValue = 2 * π
+        animateRotate.removedOnCompletion = true
+        
+        layer.addAnimation(animateRotate, forKey: "rotate end animation")
     }
     
     override func drawRect(rect: CGRect) {
@@ -168,5 +177,13 @@ let π:CGFloat = CGFloat(M_PI)
         textLayer.truncationMode = kCATruncationEnd
         textLayer.foregroundColor = optionTextColor.CGColor
         layer.addSublayer(textLayer)
+        
+        let animateRotate = CABasicAnimation(keyPath: "transform.rotation.y")
+        animateRotate.duration = 1.0
+        animateRotate.fromValue = 2 * π
+        animateRotate.toValue = 0
+        animateRotate.removedOnCompletion = true
+        
+        textLayer.addAnimation(animateRotate, forKey: "rotate end animation")
     }
 }
