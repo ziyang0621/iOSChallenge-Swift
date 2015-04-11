@@ -19,21 +19,26 @@ let π:CGFloat = CGFloat(M_PI)
     @IBInspectable var selectedArcColor: UIColor = UIColor.colorWithRGBHex(0xFF003F, alpha: 1.0)
     @IBInspectable var spaceBetweenCircleAndArc: CGFloat = 5.0
     @IBInspectable var spaceBetweenArcs: CGFloat = 10.0
+    @IBInspectable var numbersOfOptions: Int = 3 {
+        didSet {
+            for index in 0..<numbersOfOptions {
+                menuChoices.append("item")
+            }
+        }
+    }
     var menuChoices = [String]()
     var selectedIndex = 0
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        controlSetup()
+        self.addTarget(self, action: "menuPressed:", forControlEvents: .TouchUpInside)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        controlSetup()
-    }
-    
-    func controlSetup() {
-        self.addTarget(self, action: "menuPressed:", forControlEvents: .TouchUpInside)
+        for index in 0..<numbersOfOptions {
+            menuChoices.append("item")
+        }
     }
     
     func menuPressed(sender: AnyObject) {
@@ -145,7 +150,7 @@ let π:CGFloat = CGFloat(M_PI)
     }
     
     func drawText(contextRect: CGRect) {
-        optionText = menuChoices[selectedIndex]
+        optionText = menuChoices.count > 0 ? menuChoices[selectedIndex] : ""
         let fontSize:CGFloat = 14
         let font = UIFont(name: "HelveticaNeue", size: fontSize)!
         let textRect = CGRectMake(contextRect.origin.x,
