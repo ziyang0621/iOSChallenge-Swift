@@ -84,6 +84,7 @@ let π:CGFloat = CGFloat(M_PI)
             clockwise: true)
         
         let progressLine = CAShapeLayer()
+        progressLine.name = "selected"
         progressLine.path = path.CGPath
         progressLine.strokeColor = selectedArcColor.CGColor
         progressLine.fillColor = UIColor.clearColor().CGColor
@@ -114,6 +115,7 @@ let π:CGFloat = CGFloat(M_PI)
                 clockwise: true)
             
             let arcLine = CAShapeLayer()
+            arcLine.name = "arc\(index)"
             arcLine.path = path.CGPath
             arcLine.strokeColor = unselectedArcColor.CGColor
             arcLine.fillColor = UIColor.clearColor().CGColor
@@ -126,10 +128,20 @@ let π:CGFloat = CGFloat(M_PI)
         let path = UIBezierPath(ovalInRect: contextRect)
         
         let circle = CAShapeLayer()
+        circle.name = "circle"
         circle.path = path.CGPath
         circle.strokeColor = UIColor.clearColor().CGColor
         circle.fillColor = circleColor.CGColor
         layer.addSublayer(circle)
+        
+        let animateStrokeEnd = CABasicAnimation(keyPath: "fillColor")
+        animateStrokeEnd.duration = 1.0
+        animateStrokeEnd.fromValue = UIColor.grayColor().CGColor
+        animateStrokeEnd.toValue = circleColor.CGColor
+        animateStrokeEnd.removedOnCompletion = true
+        
+        circle.addAnimation(animateStrokeEnd, forKey: "circle end animation")
+
     }
     
     func drawText(contextRect: CGRect) {
@@ -143,6 +155,7 @@ let π:CGFloat = CGFloat(M_PI)
         
         let textLayer = CATextLayer()
         textLayer.frame = textRect
+        textLayer.name = "text"
         textLayer.string = optionText
         textLayer.font = font
         textLayer.fontSize = fontSize
