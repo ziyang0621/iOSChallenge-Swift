@@ -13,6 +13,9 @@
 		8593C4971AD8B890000D7C61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8593C4961AD8B890000D7C61 /* Images.xcassets */; };
 		8593C49A1AD8B890000D7C61 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8593C4981AD8B890000D7C61 /* LaunchScreen.xib */; };
 		8593C4A61AD8B890000D7C61 /* iOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C4A51AD8B890000D7C61 /* iOSChallengeTests.swift */; };
+		8593C4B01AD8B8B5000D7C61 /* ChallengeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C4AF1AD8B8B5000D7C61 /* ChallengeExtension.swift */; };
+		8593C4B21AD8B8CD000D7C61 /* MenuControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C4B11AD8B8CD000D7C61 /* MenuControl.swift */; };
+		8593C4B41AD8B998000D7C61 /* ocean_wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8593C4B31AD8B998000D7C61 /* ocean_wave.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		8593C49F1AD8B890000D7C61 /* iOSChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8593C4A41AD8B890000D7C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8593C4A51AD8B890000D7C61 /* iOSChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSChallengeTests.swift; sourceTree = "<group>"; };
+		8593C4AF1AD8B8B5000D7C61 /* ChallengeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeExtension.swift; sourceTree = "<group>"; };
+		8593C4B11AD8B8CD000D7C61 /* MenuControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuControl.swift; sourceTree = "<group>"; };
+		8593C4B31AD8B998000D7C61 /* ocean_wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ocean_wave.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 			children = (
 				8593C48F1AD8B890000D7C61 /* AppDelegate.swift */,
 				8593C4911AD8B890000D7C61 /* ViewController.swift */,
+				8593C4B11AD8B8CD000D7C61 /* MenuControl.swift */,
+				8593C4AF1AD8B8B5000D7C61 /* ChallengeExtension.swift */,
 				8593C4931AD8B890000D7C61 /* Main.storyboard */,
 				8593C4961AD8B890000D7C61 /* Images.xcassets */,
 				8593C4981AD8B890000D7C61 /* LaunchScreen.xib */,
@@ -90,6 +98,7 @@
 		8593C48D1AD8B890000D7C61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8593C4B31AD8B998000D7C61 /* ocean_wave.mp3 */,
 				8593C48E1AD8B890000D7C61 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8593C4B41AD8B998000D7C61 /* ocean_wave.mp3 in Resources */,
 				8593C4951AD8B890000D7C61 /* Main.storyboard in Resources */,
 				8593C49A1AD8B890000D7C61 /* LaunchScreen.xib in Resources */,
 				8593C4971AD8B890000D7C61 /* Images.xcassets in Resources */,
@@ -214,6 +224,8 @@
 			files = (
 				8593C4921AD8B890000D7C61 /* ViewController.swift in Sources */,
 				8593C4901AD8B890000D7C61 /* AppDelegate.swift in Sources */,
+				8593C4B21AD8B8CD000D7C61 /* MenuControl.swift in Sources */,
+				8593C4B01AD8B8B5000D7C61 /* ChallengeExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +353,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iOSChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -351,6 +364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iOSChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
