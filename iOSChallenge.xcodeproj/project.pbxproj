@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		858373991AD8C3BB00A89C25 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858373981AD8C3BB00A89C25 /* SelectionViewController.swift */; };
 		8593C4901AD8B890000D7C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C48F1AD8B890000D7C61 /* AppDelegate.swift */; };
 		8593C4921AD8B890000D7C61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C4911AD8B890000D7C61 /* ViewController.swift */; };
 		8593C4951AD8B890000D7C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8593C4931AD8B890000D7C61 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		858373981AD8C3BB00A89C25 /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		8593C48A1AD8B890000D7C61 /* iOSChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8593C48E1AD8B890000D7C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8593C48F1AD8B890000D7C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				8593C48F1AD8B890000D7C61 /* AppDelegate.swift */,
 				8593C4911AD8B890000D7C61 /* ViewController.swift */,
+				858373981AD8C3BB00A89C25 /* SelectionViewController.swift */,
 				8593C4B11AD8B8CD000D7C61 /* MenuControl.swift */,
 				8593C4AF1AD8B8B5000D7C61 /* ChallengeExtension.swift */,
 				8593C4931AD8B890000D7C61 /* Main.storyboard */,
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				858373991AD8C3BB00A89C25 /* SelectionViewController.swift in Sources */,
 				8593C4921AD8B890000D7C61 /* ViewController.swift in Sources */,
 				8593C4901AD8B890000D7C61 /* AppDelegate.swift in Sources */,
 				8593C4B21AD8B8CD000D7C61 /* MenuControl.swift in Sources */,
@@ -423,6 +427,7 @@
 				8593C4AB1AD8B890000D7C61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8593C4AC1AD8B890000D7C61 /* Build configuration list for PBXNativeTarget "iOSChallengeTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +436,7 @@
 				8593C4AE1AD8B890000D7C61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

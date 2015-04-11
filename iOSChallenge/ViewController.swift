@@ -65,6 +65,16 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func GoPressed(sender: AnyObject) {
+        let selectionVC = UIStoryboard.sidePanelViewController()
+        var selectionText = ""
+        for menu in menuArray {
+            selectionText += menu.menuChoices[menu.selectedIndex] + "\n\n"
+        }
+        selectionVC!.selectionText = selectionText
+        showViewController(selectionVC!, sender: self)
+    }
+    
     func playSound() {
         audioPlayer.prepareToPlay()
         audioPlayer.play()

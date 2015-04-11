@@ -82,7 +82,7 @@ let π:CGFloat = CGFloat(M_PI)
         layer.addSublayer(progressLine)
         
         let animateStrokeEnd = CABasicAnimation(keyPath: "strokeEnd")
-        animateStrokeEnd.duration = 1.5
+        animateStrokeEnd.duration = 1.0
         animateStrokeEnd.fromValue = 0.0
         animateStrokeEnd.toValue = 1.0
         animateStrokeEnd.removedOnCompletion = true
