@@ -65,14 +65,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func hideMenus(hide: Bool) {
-        let value: CGFloat = hide ? 0 : 1
-        for menu in menuArray {
-            menu.alpha = value
-        }
-    }
     
-    
+    // MARK: Button Pressed Methods
     @IBAction func shufflePressed(sender: AnyObject) {
         playSound()
         for menuItem in menuArray {
@@ -90,11 +84,19 @@ class ViewController: UIViewController {
         showViewController(selectionVC!, sender: self)
     }
     
+    
+    // MARK: Helper Methods
     func playSound() {
         audioPlayer.prepareToPlay()
         audioPlayer.play()
     }
-    
+ 
+    func hideMenus(hide: Bool) {
+        let value: CGFloat = hide ? 0 : 1
+        for menu in menuArray {
+            menu.alpha = value
+        }
+    }
 }
 
 

@@ -30,6 +30,7 @@ let π:CGFloat = CGFloat(M_PI)
     var menuChoices = [String]()
     var selectedIndex = 0
     
+    // MARK: Init Methods
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addTarget(self, action: "menuPressed:", forControlEvents: .TouchUpInside)
@@ -42,6 +43,7 @@ let π:CGFloat = CGFloat(M_PI)
         }
     }
     
+    // MARK: Menu Pressed Action
     func menuPressed(sender: AnyObject) {
         selectedIndex = (selectedIndex == (menuChoices.count - 1)) ? 0 : selectedIndex + 1
         setNeedsDisplay()
@@ -60,6 +62,14 @@ let π:CGFloat = CGFloat(M_PI)
         layer.addAnimation(animateRotate, forKey: "rotate end animation")
     }
     
+    func removeSublayers() {
+        if layer.sublayers != nil {
+            for subLayer in layer.sublayers {
+                subLayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
     override func drawRect(rect: CGRect) {
 
         let circleRect = CGRectInset(rect, spaceBetweenCircleAndArc, spaceBetweenCircleAndArc)
@@ -75,14 +85,7 @@ let π:CGFloat = CGFloat(M_PI)
         drawSelectedArc(bounds)
     }
     
-    func removeSublayers() {
-        if layer.sublayers != nil {
-            for subLayer in layer.sublayers {
-                subLayer.removeFromSuperlayer()
-            }
-        }
-    }
-    
+    // MARK: Drawing Helper Methods
     func drawSelectedArc(contextRect: CGRect) {
         
         let degreeDiff: CGFloat = 2 * π / 360 * (spaceBetweenArcs / 2)
