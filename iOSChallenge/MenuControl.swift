@@ -134,13 +134,13 @@ let π:CGFloat = CGFloat(M_PI)
         circle.fillColor = circleColor.CGColor
         layer.addSublayer(circle)
         
-        let animateStrokeEnd = CABasicAnimation(keyPath: "fillColor")
-        animateStrokeEnd.duration = 1.0
-        animateStrokeEnd.fromValue = UIColor.grayColor().CGColor
-        animateStrokeEnd.toValue = circleColor.CGColor
-        animateStrokeEnd.removedOnCompletion = true
+        let animateFillColor = CABasicAnimation(keyPath: "fillColor")
+        animateFillColor.duration = 1.0
+        animateFillColor.fromValue = UIColor.grayColor().CGColor
+        animateFillColor.toValue = circleColor.CGColor
+        animateFillColor.removedOnCompletion = true
         
-        circle.addAnimation(animateStrokeEnd, forKey: "circle end animation")
+        circle.addAnimation(animateFillColor, forKey: "circle end animation")
 
     }
     
