@@ -43,12 +43,14 @@ let π:CGFloat = CGFloat(M_PI)
     
     func randomizeChoices() {
         selectedIndex = Int(arc4random_uniform(UInt32(menuChoices.count)))
-        setNeedsDisplay()
+        setNeedsDisplay()        
     }
     
     override func drawRect(rect: CGRect) {
-        
+
         let circleRect = CGRectInset(rect, spaceBetweenCircleAndArc, spaceBetweenCircleAndArc)
+        
+        removeSublayers()
         
         drawCircle(circleRect)
         
@@ -59,8 +61,15 @@ let π:CGFloat = CGFloat(M_PI)
         drawSelectedArc(bounds)
     }
     
+    func removeSublayers() {
+        if layer.sublayers != nil {
+            for subLayer in layer.sublayers {
+                subLayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
     func drawSelectedArc(contextRect: CGRect) {
-        layer.sublayers = nil
         
         let degreeDiff: CGFloat = 2 * π / 360 * (spaceBetweenArcs / 2)
         let arcLength: CGFloat = 2 * π / CGFloat(menuChoices.count)
@@ -104,32 +113,42 @@ let π:CGFloat = CGFloat(M_PI)
                 endAngle: ((arcLength * CGFloat(index + 1) - degreeDiff) + π / 2),
                 clockwise: true)
             
-            path.lineWidth = arcWidth
-            unselectedArcColor.setStroke()
-            path.stroke()
+            let arcLine = CAShapeLayer()
+            arcLine.path = path.CGPath
+            arcLine.strokeColor = unselectedArcColor.CGColor
+            arcLine.fillColor = UIColor.clearColor().CGColor
+            arcLine.lineWidth = arcWidth
+            layer.addSublayer(arcLine)
         }
     }
     
     func drawCircle(contextRect: CGRect) {
         let path = UIBezierPath(ovalInRect: contextRect)
-        circleColor.setFill()
-        path.fill()
+        
+        let circle = CAShapeLayer()
+        circle.path = path.CGPath
+        circle.strokeColor = UIColor.clearColor().CGColor
+        circle.fillColor = circleColor.CGColor
+        layer.addSublayer(circle)
     }
     
     func drawText(contextRect: CGRect) {
         optionText = menuChoices[selectedIndex]
-        let font = UIFont(name: "HelveticaNeue", size: 14)!
-        let textStyle = NSMutableParagraphStyle()
-        textStyle.alignment = NSTextAlignment.Center
-        textStyle.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-        let textFontAttributes = [NSFontAttributeName: font, NSParagraphStyleAttributeName: textStyle, NSForegroundColorAttributeName: optionTextColor]
-        
-        let size = optionText.sizeWithAttributes(textFontAttributes)
+        let fontSize:CGFloat = 14
+        let font = UIFont(name: "HelveticaNeue", size: fontSize)!
         let textRect = CGRectMake(contextRect.origin.x,
-            contextRect.origin.y + CGFloat(floorf(Float((contextRect.height - size.height) / 2))),
+            contextRect.origin.y + CGFloat(floorf(Float((contextRect.height - fontSize) / 2))),
             contextRect.width,
-            size.height)
+            contextRect.height)
         
-        optionText.drawInRect(textRect, withAttributes: textFontAttributes)
+        let textLayer = CATextLayer()
+        textLayer.frame = textRect
+        textLayer.string = optionText
+        textLayer.font = font
+        textLayer.fontSize = fontSize
+        textLayer.alignmentMode = kCAAlignmentCenter
+        textLayer.truncationMode = kCATruncationEnd
+        textLayer.foregroundColor = optionTextColor.CGColor
+        layer.addSublayer(textLayer)
     }
 }

@@ -53,15 +53,30 @@ class ViewController: UIViewController {
         menuArray = [menuOne, menuTwo, menuThree, menuFour, menuFive, menuSix]
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        hideMenus(true)
+        UIView.animateWithDuration(2.5, animations: { () -> Void in
+            self.hideMenus(false)
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func hideMenus(hide: Bool) {
+        let value: CGFloat = hide ? 0 : 1
+        for menu in menuArray {
+            menu.alpha = value
+        }
     }
     
     
     @IBAction func shufflePressed(sender: AnyObject) {
         playSound()
         for menuItem in menuArray {
-            menuItem.randomizeChoices()
+            menuItem.randomizeChoices()            
         }
     }
     
